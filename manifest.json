@@ -1,0 +1,28 @@
+{
+    "name": "Remove CSS",
+    "version": "1",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_icon": "delete.png"
+    },
+    "web_accessible_resources": [{
+        "matches": ["<all_urls>"],
+        "resources": ["utils.js"]
+      }],
+    "content_scripts": [
+        {
+         "run_at": "document_end",
+          "matches": ["<all_urls>"],
+          "js": ["content.js"],
+          "persistent": false
+        }
+    ],
+    
+    "permissions": ["storage","unlimitedStorage","activeTab","declarativeContent", "tabs", "scripting","contextMenus"],
+    "host_permissions": [
+        "<all_urls>"
+       ]
+  }
